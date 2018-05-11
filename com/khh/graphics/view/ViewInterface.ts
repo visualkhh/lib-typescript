@@ -1,3 +1,3 @@
 export interface ViewInterface {
-  onDraw(canvas?: HTMLCanvasElement): void;
+  onDraw(target?: HTMLCanvasElement | CanvasRenderingContext2D): void;
 }

@@ -1,24 +1,8 @@
 export abstract class Stage {
 
-
-  // private _refer: Stage;
-  // constructor(refer?: Stage) {
-  //   this._refer = refer||this;
-  // }
-  //
-  //
-  // get refer(): Stage {
-  //   return this._refer;
-  // }
-  //
-  // public abstract next(): Stage;
-  // public abstract next(name: string): Stage;
-  // public abstract previous(): Stage;
-  // public abstract previous(name: string): Stage;
-  // public abstract data(data: Map<string,any>): void;
-
-  private _data: Map<string,any>;
-
+  private _width: number;
+  private _height: number;
+  private _data: Map<string, any>;
 
   get data(): Map<string, any> {
     return this._data;
@@ -26,5 +10,21 @@ export abstract class Stage {
 
   set data(value: Map<string, any>) {
     this._data = value;
+  }
+
+  get width(): number {
+    return this._width;
+  }
+
+  set width(value: number) {
+    this._width = value;
+  }
+
+  get height(): number {
+    return this._height;
+  }
+
+  set height(value: number) {
+    this._height = value;
   }
 }

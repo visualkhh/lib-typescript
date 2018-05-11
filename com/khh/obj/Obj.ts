@@ -1,7 +1,6 @@
-import {ClockSignal} from '../clock/ClockSignal';
 import {Point} from '../graphics/Point';
 
-export abstract class Obj extends Point{
+export class Obj extends Point {
 
   //질량
   private _mass: number;

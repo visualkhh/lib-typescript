@@ -6,11 +6,11 @@ export class Clock {
 
   private _iterval: number;
   private source: Observable<number>;
-  private subscriptions: Map<Subscription,any>;
+  private subscriptions: Map<Subscription, any>;
 
   constructor(iterval: number) {
     this._iterval = iterval;
-    this.subscriptions = new Map<Subscription,any>();
+    this.subscriptions = new Map<Subscription, any>();
     this.init();
   }
 
@@ -33,12 +33,12 @@ export class Clock {
     this.subscriptions.clear();
   }
 
-  public unsubscribe(): void{
-    this.subscriptions.forEach((val, key)=>key.unsubscribe());
+  public unsubscribe(): void {
+    this.subscriptions.forEach((val, key) => key.unsubscribe());
   }
 
-  public signalForce(): void{
-    this.subscriptions.forEach((it)=>it());
+  public signalForce(): void {
+    this.subscriptions.forEach((it) => it());
   }
   public delete(s: Subscription): void{
     s.unsubscribe();
@@ -50,13 +50,13 @@ export class Clock {
   private reset(value: number = this._iterval) {
     this.unsubscribe();
     this.source = interval(value);
-    this.subscriptions.forEach((val, key)=>this.subscribe(val));
+    this.subscriptions.forEach((val, key) => this.subscribe(val));
   }
 
 
   public subscribe(next?: (value: any) => void, error?: (error: any) => void, complete?: () => void): Subscription {
-    let subscription = this.source.subscribe(next);
-    this.subscriptions.set(subscription,next);
+    const subscription = this.source.subscribe(next);
+    this.subscriptions.set(subscription, next);
     return subscription;
   }
 

@@ -6,7 +6,7 @@ export class RandomUtil {
     if(isNullOrUndefined(min)){
       return Math.random();
     }else if(!isNullOrUndefined(min) && isNullOrUndefined(max)){
-      return Math.random()*min;
+      return Math.random() * min;
     }else{
       return Math.random() * (max - min) + min;
     }
