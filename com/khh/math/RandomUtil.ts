@@ -1,11 +1,11 @@
-import {isNullOrUndefined} from 'util';
+import {ValidUtil} from '../valid/ValidUtil';
 
 export class RandomUtil {
 
   static random(min?: number, max?: number) {
-    if(isNullOrUndefined(min)){
+    if(ValidUtil.isNullOrUndefined(min)){
       return Math.random();
-    }else if(!isNullOrUndefined(min) && isNullOrUndefined(max)){
+    }else if(!ValidUtil.isNullOrUndefined(min) && ValidUtil.isNullOrUndefined(max)){
       return Math.random() * min;
     }else{
       return Math.random() * (max - min) + min;
