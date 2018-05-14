@@ -18,7 +18,6 @@ export class Clock {
     this.source = interval(this._iterval);
   }
 
-
   get iterval(): number {
     return this._iterval;
   }
@@ -27,8 +26,7 @@ export class Clock {
     this.reset(value);
   }
 
-
-  public clear(): void{
+  public clear(): void {
     this.unsubscribe();
     this.subscriptions.clear();
   }
@@ -40,7 +38,7 @@ export class Clock {
   public signalForce(): void {
     this.subscriptions.forEach((it) => it());
   }
-  public delete(s: Subscription): void{
+  public delete(s: Subscription): void {
     s.unsubscribe();
     this.subscriptions.delete(s);
     this.reset();
@@ -52,7 +50,6 @@ export class Clock {
     this.source = interval(value);
     this.subscriptions.forEach((val, key) => this.subscribe(val));
   }
-
 
   public subscribe(next?: (value: any) => void, error?: (error: any) => void, complete?: () => void): Subscription {
     const subscription = this.source.subscribe(next);
