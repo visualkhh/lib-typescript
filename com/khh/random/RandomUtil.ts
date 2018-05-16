@@ -6,10 +6,16 @@ export class RandomUtil {
     if(ValidUtil.isNullOrUndefined(min)){
       return Math.random();
     }else if(!ValidUtil.isNullOrUndefined(min) && ValidUtil.isNullOrUndefined(max)){
-      return Math.random() * min;
+      return Math.random() * min!;
     }else{
-      return Math.random() * (max - min) + min;
+      return Math.random() * (max! - min!) + min!;
     }
+  }
+  static uuid(format: string = 'xxxx-xxxx-xxxx-xxxx'): string {
+     return format.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+      });
   }
 
   // // min (포함) 과 max (포함) 사이의 임의 정수를 반환
