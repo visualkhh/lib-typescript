@@ -8,6 +8,13 @@ export class ValidUtil {
           return false;
       }
   }
+  static isNull(data: any): boolean {
+      if (null == data) {
+          return true;
+      }else {
+          return false;
+      }
+  }
     static isArray(object_o: any): boolean {
         if (ValidUtil.isNullOrUndefined(object_o)){
             return false;

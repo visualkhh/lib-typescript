@@ -8,21 +8,21 @@ export class StringUtil {
      * @returns {Array}.
      */
 
-    public static isMatching(input_s, matchingSrting_arr_s): Array<string> {
-        var result  = new Array<string>();
-        var arrindex = 0 ;
-        if(ValidUtil.isArray(matchingSrting_arr_s)) {
-            for(var i=0; i <matchingSrting_arr_s.length;i++) {
-                var index = input_s.indexOf(matchingSrting_arr_s[i]);
-                if(index>=0) {
-                    result[arrindex]=matchingSrting_arr_s[i];
+    public static isMatching(input_s, matchingSrting_arr_s): string[] {
+        const result  = new Array<string>();
+        let arrindex = 0 ;
+        if (ValidUtil.isArray(matchingSrting_arr_s)) {
+            for (let i = 0; i < matchingSrting_arr_s.length; i++) {
+                const index = input_s.indexOf(matchingSrting_arr_s[i]);
+                if (index >= 0) {
+                    result[arrindex] = matchingSrting_arr_s[i];
                     arrindex++;
                 }
             }
-        }else if(ValidUtil.isString(matchingSrting_arr_s)) {
-            var index = input_s.indexOf(matchingSrting_arr_s);
-            if(index>=0) {
-                result[arrindex]=matchingSrting_arr_s;
+        }else if (ValidUtil.isString(matchingSrting_arr_s)) {
+            const index = input_s.indexOf(matchingSrting_arr_s);
+            if (index >= 0) {
+                result[arrindex] = matchingSrting_arr_s;
                 arrindex++;
             }
         }
@@ -30,7 +30,7 @@ export class StringUtil {
         //result.pop();
 
         return result;
-    };
+    }
 
     /*
     var input = "'30' -> decimal: %20d / bin = %b / oct = %o / hex = %x / HEX = %X";
@@ -216,76 +216,79 @@ export class StringUtil {
 //         return str;
 //     };
 
-    public static rsubString (data_s,blen_n) {
-        return data_s.substring(data_s.length-blen_n,data_s.length);
-    };
-    public static lsubString (data_s,alen_n) {
-        return data_s.substring(0,alen_n);
-    };
+    public static rsubString(data_s, blen_n) {
+        return data_s.substring(data_s.length - blen_n, data_s.length);
+    }
+    public static lsubString(data_s, alen_n) {
+        return data_s.substring(0, alen_n);
+    }
 
-    public static lpad(fill_s,len_n,full_s) {
+    public static lpad(fill_s, len_n, full_s) {
         while (len_n > full_s.length) {
-            full_s=fill_s+full_s;
-        };
-        return this.rsubString(full_s,len_n);
-    };
-    public static rpad(fill_s,len_n,full_s) {
+            full_s = fill_s + full_s;
+        }
+        return this.rsubString(full_s, len_n);
+    }
+    public static rpad(fill_s, len_n, full_s) {
         while (len_n > full_s.length) {
-            full_s+=fill_s;
-        };
-        return this.lsubString(full_s,len_n);
-    };
+            full_s += fill_s;
+        }
+        return this.lsubString(full_s, len_n);
+    }
 
-    public static lappend(count_n,input_s) {
-        var s = '', i = 0;
+    public static lappend(count_n, input_s) {
+        let s = '';
+        let i = 0;
         while (i++ < count_n) {
             s += input_s;
         }
         return s;
-    };
-    public static rAppend(count_n,input_s) {
-        var s = '', i = 0;
+    }
+    public static rAppend(count_n, input_s) {
+        let s = '';
+        let i = 0;
         while (i++ < count_n) {
-            s = input_s+s;
+            s = input_s + s;
         }
         return s;
-    };
+    }
     public static trim(input_s) {
         //return input_s.replace(/(^\s*)|(\s*$)/g, "");
-        return input_s.replace(/(^\s*)|(\s*$)/gi, "");
-    };
+        return input_s.replace(/(^\s*)|(\s*$)/gi, '');
+    }
     public static ltrim(input_s) {
-        return input_s.replace(/(^\s*)/, "");
-    };
+        return input_s.replace(/(^\s*)/, '');
+    }
     public static rtrim(input_s) {
-        return input_s.replace(/(\s*$)/, "");
-    };
-    public static nvl(input_s,replace_s) {
-        if (input_s == null)
-            return replace_s != null ? replace_s : "";
-        else
+        return input_s.replace(/(\s*$)/, '');
+    }
+    public static nvl(input_s, replace_s) {
+        if (input_s == null) {
+            return replace_s != null ? replace_s : '';
+        }else {
             return input_s;
-    };
+        }
+    }
     public static deleteSpace(input_s) {
-        return input_s.replace(/\s/g,'');
-    };
-    public static deleteChar(input_s,del_s) {
-        return StringUtil.replaceAll(input_s,del_s,'');
-    };
-    public static replaceAll(msg_s,before_s,after_s) {
-        var regexp = new RegExp(before_s,"gi");
-        return msg_s.replace(regexp,after_s);
-    };
+        return input_s.replace(/\s/g, '');
+    }
+    public static deleteChar(input_s, del_s) {
+        return StringUtil.replaceAll(input_s, del_s, '');
+    }
+    public static replaceAll(msg_s, before_s, after_s) {
+        const regexp = new RegExp(before_s, 'gi');
+        return msg_s.replace(regexp, after_s);
+    }
 
-    public static isEmpty (input_s) {
+    public static isEmpty(input_s) {
 
-        if ( !input_s || input_s == null || input_s.replace(/ /gi,"") == "") {
+        if ( !input_s || input_s == null || input_s.replace(/ /gi, '') === '') {
             return true;
         }
         return false;
-    };
+    }
 
-    public static isInSpecialChar (input_s) {
+    public static isInSpecialChar(input_s) {
         /*    var deny_pattern = /[^(-Ra-zA-Z0-9-R\s-R\u3131-\u314e\u314f-\u3163\uac00-\ud7a3)]/;
             if(deny_pattern.test(input_s))
             {
@@ -295,30 +298,28 @@ export class StringUtil {
             */
 
         const re = /[~!@\#$%^&*\()\=+_']/gi;
-        if(re.test(input_s)) {
-            return true;;
+        if (re.test(input_s)) {
+            return true;
         }
         return false;
 
+    }
 
-    };
-
-    public static isOnlySpecialChar (input_s) {
-        var deny_pattern = /[^~!@\#$%^&*\()\=+_']+/g;
-        if(deny_pattern.test(input_s))
-        {
+    public static isOnlySpecialChar(input_s) {
+        const deny_pattern = /[^~!@\#$%^&*\()\=+_']+/g;
+        if (deny_pattern.test(input_s)) {
             return false;
         }
         return true;
-    };
+    }
     public static removeComma(input_s) {
-        return input_s.replace(/,/gi,"");
-    };
+        return input_s.replace(/,/gi, '');
+    }
 //금액 입력시 "," 자동 입력
-    public static addComma ( number_s  ) {
-        return this.raddGroupChar(number_s,3,",");
-    };
-    public static raddGroupChar ( number_s , jumpsize_n,addchar_s ) {
+    public static addComma( number_s  ) {
+        return this.raddGroupChar(number_s, 3, ',');
+    }
+    public static raddGroupChar( number_s , jumpsize_n, addchar_s ) {
 
         /*
          var reg = /(^[+-]?\d+)(\d{3})/;   // 정규식
@@ -334,48 +335,41 @@ export class StringUtil {
 
         //number_s = this.delComma( number_s );
         number_s = StringUtil.deleteChar(number_s, addchar_s);
-        var src;
-        var i;
-        var	factor;
-        var	su;
+        let src;
+        let i;
+        let	factor;
+        let	su;
 
         factor = number_s.length % jumpsize_n;
         su     = (number_s.length - factor) / jumpsize_n;
-        src    =  number_s.substring(0,factor);
+        src    =  number_s.substring(0, factor);
 
-        for(i=0; i < su ; i++)
-        {
-            if((factor == 0) && (i == 0))       // "XXX" 인경우
-            {
-                src += number_s.substring(factor+(jumpsize_n*i), factor+jumpsize_n+(jumpsize_n*i));
-            }
-            else
-            {
+        for (i = 0; i < su ; i++) {
+            if ((factor === 0) && (i === 0)) {        // "XXX" 인경우
+                src += number_s.substring(factor + (jumpsize_n * i), factor + jumpsize_n + (jumpsize_n * i));
+            }else {
                 src += addchar_s  ;
-                src += number_s.substring(factor+(jumpsize_n*i), factor+3+(jumpsize_n*i));
+                src += number_s.substring(factor + (jumpsize_n * i), factor + 3 + (jumpsize_n * i));
             }
         }
         number_s = src;
 
         return number_s;
-    };
-
-
+    }
 
     /*
     function isNumber(input) {
         var chars = "0123456789";
         return isCharsOnly(input,chars);
     }*/
-    public static isInNumber (string_s) {
-        var deny_pattern = /[0-9]/;
-        if(deny_pattern.test(string_s))
-        {
+    public static isInNumber(string_s) {
+        const deny_pattern = /[0-9]/;
+        if (deny_pattern.test(string_s)) {
             return true;
         }
         return false;
-    };
-    public static isOnlyNumber (string_s) {
+    }
+    public static isOnlyNumber(string_s) {
         /*  var deny_pattern = /[^(0-9)]/gi;
           if(deny_pattern.test(string_s))
           {
@@ -383,53 +377,50 @@ export class StringUtil {
           }
           return true;
           */
-        var deny_pattern = /[^\d]+/g;
-        if(deny_pattern.test(string_s))
-        {
+        const deny_pattern = /[^\d]+/g;
+        if (deny_pattern.test(string_s)) {
             return false;
         }
         return true;
-    };
+    }
     public static getOnlyNumber(msg_s) {
         return msg_s.replace(/[^\d]+/g, '');
-    };
+    }
     public static getOnlyString(msg_s) {
         return msg_s.replace(/[\d]+/g, '');
-    };
-
+    }
 
     public static isInAlphabet(input_s) {
-        var pattern = /[a-zA-Z]/g;
-        return (pattern.test(input_s)) ? true: false ;
-    };
+        const pattern = /[a-zA-Z]/g;
+        return (pattern.test(input_s)) ? true : false ;
+    }
     public static isOnlyAlphabet(input_s) {
-        var pattern = /^[a-zA-Z]+$/;
+        const pattern = /^[a-zA-Z]+$/;
         return (pattern.test(input_s)) ? true : false;
-    };
+    }
 
-    public static isInAlphabetUpper=function (input_s) {
-        var pattern = /[A-Z]/g;
+    public static isInAlphabetUpper(input_s) {
+        const pattern = /[A-Z]/g;
         return (pattern.test(input_s)) ? true : false;
-    };
-    public static isOnlyAlphabetUpper=function (input_s) {
-        var pattern = /^[A-Z]+$/;
+    }
+    public static isOnlyAlphabetUpper(input_s) {
+        const pattern = /^[A-Z]+$/;
         return (pattern.test(input_s)) ? true : false;
-    };
+    }
 
-    public static isInAlphabetLower (input_s) {
-        var pattern = /[a-z]/g;
+    public static isInAlphabetLower(input_s) {
+        const pattern = /[a-z]/g;
         return (pattern.test(input_s)) ? true : false;
-    };
-    public static isOnlyAlphabetLower (input_s) {
-        var pattern = /^[a-z]+$/;
+    }
+    public static isOnlyAlphabetLower(input_s) {
+        const pattern = /^[a-z]+$/;
         return (pattern.test(input_s)) ? true : false;
-    };
+    }
 
-
-//자바스크립트 한글 깨지는 게있어서 한글로 정규식은 못만듬  그래서 유니코드로 
-    public static isInHangeul (input_s) {
+//자바스크립트 한글 깨지는 게있어서 한글로 정규식은 못만듬  그래서 유니코드로
+    public static isInHangeul(input_s) {
         //var pattern= /[ㄱ-ㅎ|ㅏ-ㅣ|가-힝]/;
-        var pattern = /[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]/g;
+        const pattern = /[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]/g;
         return (pattern.test(input_s)) ? true : false;
         //var pattern= /[ㄱ-ㅎ|ㅏ-ㅣ|가-힝]/;
         //return (pattern.test(input_s)) ? true : false;
@@ -449,58 +440,55 @@ export class StringUtil {
           */
         //if((event.keyCode < 12592) || (event.keyCode > 12687))
         //event.returnValue = false
-    };
+    }
     public static isOnlyHangeul(input_s) {
         // var pattern= /[ㄱ-ㅎㅏ-ㅣ가-힝]+/g;
         // return (pattern.test(input_s)) ? true : false;
-        var pattern = /^[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*$/g;
+        const pattern = /^[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*$/g;
         return (pattern.test(input_s)) ? true : false;
-    };
+    }
 //var chars = "abcdefghijklmnopqrstuvwxyz";
 //return isCharsOnly(input_s,chars);
-    public static isOnlyChars (input_s,chars) {
-        for (var inx = 0; inx < input_s.length; inx++) {
-            if (chars.indexOf(input_s.charAt(inx)) == -1)
+    public static isOnlyChars(input_s, chars) {
+        for (let inx = 0; inx < input_s.length; inx++) {
+            if (chars.indexOf(input_s.charAt(inx)) === -1) {
                 return false;
+            }
         }
         return true;
-    };
-
-
+    }
 
     public static encodeURI(url_s) {
         return encodeURI(url_s);
-    };
+    }
     public static decodeURI(url_s) {
         return decodeURI(url_s);
-    };
-    public static getUnicode (input_s) {
+    }
+    public static getUnicode(input_s) {
         return escape(input_s);
-    };
+    }
 
     public static upper(inputStr_s) {
         return String(inputStr_s).toUpperCase();
-    };
+    }
     public static lower(inputStr_s) {
         return  String(inputStr_s).toLowerCase();
-    };
+    }
     public static getByteLength(inputStr_s) {
-        var byteLength = 0;
-        var c;
-        for(var i = 0; i < inputStr_s.length; i++) {
+        let byteLength = 0;
+        let c;
+        for (let i = 0; i < inputStr_s.length; i++) {
             c = escape(inputStr_s.charAt(i));
 
-            if (c.length == 1) {
+            if (c.length === 1) {
                 byteLength ++;
-            } else if (c.indexOf("%u") != -1)  {
+            } else if (c.indexOf('%u') !== -1)  {
                 byteLength += 2;
-            } else if (c.indexOf("%") != -1)  {
-                byteLength += c.length/3;
+            } else if (c.indexOf('%') !== -1)  {
+                byteLength += c.length / 3;
             }
         }
         return byteLength;
-    };
-
-
+    }
 
 }
