@@ -4,15 +4,12 @@ export class Rect {
   right: number;
   bottom: number;
 
-
   constructor(left: number  = 0, top: number = 0, right: number = 0, bottom: number = 0) {
     this.bottom = bottom;
     this.left = left;
     this.right = right;
     this.top = top;
   }
-
-
 
   public isEmpty(): boolean {
     return this.left >= this.right || this.top >= this.bottom;
@@ -94,10 +91,10 @@ export class Rect {
     //     this.right -= right;
     //     this.bottom -= bottom;
     // }
-    // public boolean contains(int x, int y) {
-    //     return left < right && top < bottom  // check for empty first
-    //            && x >= left && x < right && y >= top && y < bottom;
-    // }
+    public contains(x: number, y: number): boolean {
+        return this.left < this.right && this.top < this.bottom  // check for empty first
+               && x >= this.left && x < this.right && y >= this.top && y < this.bottom;
+    }
     // public boolean contains(int left, int top, int right, int bottom) {
     //            // check for empty first
     //     return this.left < this.right && this.top < this.bottom

@@ -1,13 +1,10 @@
-import {Point} from './Point';
 import {Obj} from '../obj/Obj';
+import {Point} from './Point';
 
 export class ObjImg extends Obj {
 
-
-
   private _img: HTMLImageElement;
   private _head: Point;
-
 
   // = new Point(img.width/2,img.height/2,0),
   constructor(x: number = 0, y: number = 0, z: number = 0, img?: HTMLImageElement, head?: Point) {

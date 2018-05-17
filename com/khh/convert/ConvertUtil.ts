@@ -43,45 +43,45 @@ export class ConvertUtil {
         return JSON.parse(message);
     }
 
-    static objToJson(obj: any): string{
-        return JSON.stringify(obj)
+    static objToJson(obj: any): string {
+        return JSON.stringify(obj);
     }
-    static objToMap(obj: any): Map<string, any>{
-        const mp = new Map;
-        Object.keys ( obj ). forEach (k => { mp.set(k, obj[k]) });
+    static objToMap(obj: any): Map<string, any> {
+        const mp = new Map<string, any>();
+        Object.keys ( obj ). forEach ((k) => { mp.set(k, obj[k]); });
         return mp;
     }
-    static mapToObj(map: Map<string, any>): any{
+    static mapToObj(map: Map<string, any>): any {
         const obj = {};
-        map.forEach ((v,k) => { obj[k] = v });
+        map.forEach ((v, k) => { obj[k] = v; });
         return obj;
     }
 
-    static toObject(obj: any): any{
-        console.log(Object.prototype.toString.call(obj))
-        if (ValidUtil.isMap(obj)){
+    static toObject(obj: any): any {
+        console.log(Object.prototype.toString.call(obj));
+        if (ValidUtil.isMap(obj)) {
             const map = obj as Map<string, any>;
             obj = this.mapToObj(map);
         }
-        if(ValidUtil.isArray(obj)){
-            let arr = obj as Array<any>;
-            for (let i = 0; i < arr.length; i++){
+        if (ValidUtil.isArray(obj)) {
+            const arr = obj as any[];
+            for (let i = 0; i < arr.length; i++) {
                 arr[i] = this.toObject(arr[i]);
             }
         }
-        if(ValidUtil.isFunction(obj)){
-            obj = this.toObject((obj as Function)());
+        if (ValidUtil.isFunction(obj)) {
+            obj = this.toObject(obj());
         }
-        if(ValidUtil.isObject(obj)){
-            for (var property in obj) {
+        if (ValidUtil.isObject(obj)) {
+            for (const property in obj) {
                 obj[property] = this.toObject(obj[property]);
             }
         }
 
-        return obj
+        return obj;
 
     }
-    static toJson(obj: any): string{
+    static toJson(obj: any): string {
         const at = this.toObject(obj);
         return JSON.stringify(at);
 
