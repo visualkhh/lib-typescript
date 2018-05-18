@@ -3,12 +3,12 @@ import {ValidUtil} from '../valid/ValidUtil';
 export class RandomUtil {
 
   static random(min?: number, max?: number) {
-    if(ValidUtil.isNullOrUndefined(min)){
+    if(ValidUtil.isNullOrUndefined(min)) {
       return Math.random();
-    }else if(!ValidUtil.isNullOrUndefined(min) && ValidUtil.isNullOrUndefined(max)){
-      return Math.random() * min!;
+    }else if (!ValidUtil.isNullOrUndefined(min) && ValidUtil.isNullOrUndefined(max)) {
+      return Math.random() * min;
     }else{
-      return Math.random() * (max! - min!) + min!;
+      return Math.random() * (max - min) + min;
     }
   }
   static uuid(format: string = 'xxxx-xxxx-xxxx-xxxx'): string {

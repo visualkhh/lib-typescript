@@ -4,7 +4,6 @@ export class Intent<T> {
   private _data: T;
   private _flag: any;
 
-
   constructor(data?: T, name?: string,  flag?: any) {
     this._name = name;
     this._data = data;
@@ -18,7 +17,6 @@ export class Intent<T> {
   set name(value: string) {
     this._name = value;
   }
-
 
   get data(): T {
     return this._data;

@@ -12,6 +12,4 @@ export class Obj extends Point {
   set mass(value: number) {
     this._mass = value;
   }
-
-
 }
