@@ -458,15 +458,15 @@ export class StringUtil {
         return true;
     }
 
-    public static encodeURI(url_s) {
-        return encodeURI(url_s);
-    }
-    public static decodeURI(url_s) {
-        return decodeURI(url_s);
-    }
-    public static getUnicode(input_s) {
-        return escape(input_s);
-    }
+    // public static encodeURI(url_s) {
+    //     return encodeURI(url_s);
+    // }
+    // public static decodeURI(url_s) {
+    //     return decodeURI(url_s);
+    // }
+    // public static getUnicode(input_s) {
+    //     return escape(input_s);
+    // }
 
     public static upper(inputStr_s) {
         return String(inputStr_s).toUpperCase();
@@ -474,21 +474,21 @@ export class StringUtil {
     public static lower(inputStr_s) {
         return  String(inputStr_s).toLowerCase();
     }
-    public static getByteLength(inputStr_s) {
-        let byteLength = 0;
-        let c;
-        for (let i = 0; i < inputStr_s.length; i++) {
-            c = escape(inputStr_s.charAt(i));
-
-            if (c.length === 1) {
-                byteLength ++;
-            } else if (c.indexOf('%u') !== -1)  {
-                byteLength += 2;
-            } else if (c.indexOf('%') !== -1)  {
-                byteLength += c.length / 3;
-            }
-        }
-        return byteLength;
-    }
+    // public static getByteLength(inputStr_s) {
+    //     let byteLength = 0;
+    //     let c;
+    //     for (let i = 0; i < inputStr_s.length; i++) {
+    //         c = escape(inputStr_s.charAt(i));
+    //
+    //         if (c.length === 1) {
+    //             byteLength ++;
+    //         } else if (c.indexOf('%u') !== -1)  {
+    //             byteLength += 2;
+    //         } else if (c.indexOf('%') !== -1)  {
+    //             byteLength += c.length / 3;
+    //         }
+    //     }
+    //     return byteLength;
+    // }
 
 }

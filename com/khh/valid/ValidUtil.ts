@@ -42,6 +42,11 @@ export class ValidUtil {
         }else {
             return  Object.prototype.toString.call(object_o).trim() === '[object Function]';
         }
+        // if (typeof object_o === 'function') {
+        //     return true;
+        // }else {
+        //     return false;
+        // }
     }
     static isObject(object_o: any): boolean {
         if (ValidUtil.isNullOrUndefined(object_o)) {
