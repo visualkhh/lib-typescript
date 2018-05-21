@@ -1,6 +1,8 @@
-import {Point} from '../graphics/Point';
+// import {Point} from '../graphics/Point';
 
-export class Obj extends Point {
+import {PointVector} from '../math/PointVector';
+
+export class Obj extends PointVector {
 
   //질량
   private _mass: number;
