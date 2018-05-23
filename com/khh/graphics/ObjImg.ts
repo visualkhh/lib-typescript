@@ -5,7 +5,7 @@ export class ObjImg extends Obj {
 
   private _img: HTMLImageElement;
   private _head: Point;
-
+  private _index = 0;
   // = new Point(img.width/2,img.height/2,0),
   constructor(x: number = 0, y: number = 0, z: number = 0, img?: HTMLImageElement, head?: Point) {
     super(x, y, z);
@@ -13,7 +13,15 @@ export class ObjImg extends Obj {
     this._head = head;
   }
 
-  get img(): HTMLImageElement {
+    get index(): number {
+        return this._index;
+    }
+
+    set index(value: number) {
+        this._index = value;
+    }
+
+    get img(): HTMLImageElement {
     return this._img;
   }
 
