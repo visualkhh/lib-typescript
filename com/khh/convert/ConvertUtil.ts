@@ -58,7 +58,7 @@ export class ConvertUtil {
     }
 
     static toObject(obj: any): any {
-        console.log(Object.prototype.toString.call(obj));
+        //console.log(Object.prototype.toString.call(obj));
         if (ValidUtil.isMap(obj)) {
             const map = obj as Map<string, any>;
             obj = this.mapToObj(map);
