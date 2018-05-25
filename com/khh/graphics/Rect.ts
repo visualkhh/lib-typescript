@@ -110,6 +110,8 @@ export class Rect {
     //            && left <= r.left && top <= r.top && right >= r.right && bottom >= r.bottom;
     // }
 
+    public toString(): string{
+        return '[left:' + this.left + ', top:' + this.top + ', right:' + this.right + ', bottom:' + this.bottom + ']';
+    }
 
 }
-
