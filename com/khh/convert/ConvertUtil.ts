@@ -69,9 +69,9 @@ export class ConvertUtil {
                 arr[i] = this.toObject(arr[i]);
             }
         }
-        if (ValidUtil.isFunction(obj)) {
-            obj = this.toObject(obj());
-        }
+        // if (ValidUtil.isFunction(obj)) {
+        //     obj = this.toObject(obj());
+        // }
         if (ValidUtil.isObject(obj)) {
             for (const property in obj) {
                 obj[property] = this.toObject(obj[property]);
@@ -81,6 +81,28 @@ export class ConvertUtil {
         return obj;
 
     }
+
+    static iteratorToArray <T>(it: Iterator<T>): T[] {
+        return Array.from(it) as T[];
+    }
+    /**
+     * @deprecated
+     * @param {T} obj
+     * @returns {T}
+     */
+    static clone <T>(obj: T): T {
+        if (null == obj || 'object' !== typeof obj) {
+            return obj;
+        }
+        const copy = new Object() as any;
+        for (const attr in obj) {
+            if (obj.hasOwnProperty(attr)) {
+                copy[attr] = obj[attr];
+            }
+        }
+        return copy;
+    }
+
     static toJson(obj: any): string {
         const at = this.toObject(obj);
         return JSON.stringify(at);
