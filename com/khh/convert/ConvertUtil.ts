@@ -82,7 +82,7 @@ export class ConvertUtil {
 
     }
 
-    static iteratorToArray <T>(it: Iterator<T>): T[] {
+    static iteratorToArray <T>(it): T[] {
         return Array.from(it) as T[];
     }
     /**

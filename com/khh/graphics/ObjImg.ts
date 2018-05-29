@@ -4,6 +4,8 @@ import {Point} from './Point';
 export class ObjImg extends Obj {
 
   private _img: HTMLImageElement;
+    private _imgAlign = 'right';
+  private _imgBaseline = 'hanging';
   private _head: Point;
   private _index = 0;
   // = new Point(img.width/2,img.height/2,0),
@@ -48,4 +50,20 @@ export class ObjImg extends Obj {
   public getImgCenterX() {
     return this.img.width / 2;
   }
+
+    get imgAlign(): string {
+        return this._imgAlign;
+    }
+
+    set imgAlign(value: string) {
+        this._imgAlign = value;
+    }
+
+    get imgBaseline(): string {
+        return this._imgBaseline;
+    }
+
+    set imgBaseline(value: string) {
+        this._imgBaseline = value;
+    }
 }
