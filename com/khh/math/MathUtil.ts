@@ -30,6 +30,9 @@ export class MathUtil {
         }
         return sum;
     }
+    static radians(aAngle: number): number {
+        return aAngle / 180 * Math.PI;
+    }
 
     // static createCanvas(w, h) {
     //     let canvas = document.createElement('canvas');
