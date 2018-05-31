@@ -22,6 +22,17 @@ export class CollectionUtil {
         });
         return r;
     }
+    public static ignoreItem<V>(cointain: Set<V> | V[], ignore: Set<V> | V[], add?: (v: V) => void): Set<V> {
+        const rvalue = new Set();
+        const uIgnore = new Set(ignore);
+        new Set(cointain).forEach((v) => {
+            if (!uIgnore.has(v)) {
+                rvalue.add(v);
+                if (add) {add(v); }
+            }
+        });
+        return rvalue;
+    }
     public static hasMapItem<K, V>(cointain: Map<K, V>, keys: Set<K> | K[], del?: (v: V) => void): Map<K, V> {
         const atKeys = new Set(keys);
         const r = new Map<any, any>();
