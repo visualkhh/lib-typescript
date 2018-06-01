@@ -1,6 +1,6 @@
+import {isNumeric} from 'tslint';
 import {StringUtil} from '../string/StringUtil';
 import {ValidUtil} from '../valid/ValidUtil';
-import {isNumeric} from 'tslint';
 
 export class DateUtil {
     static getFullMilliSecond() {
