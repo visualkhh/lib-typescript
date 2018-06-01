@@ -1,19 +1,19 @@
 import {ValidUtil} from '../valid/ValidUtil';
 
 export class RandomUtil {
-
+    static readonly  d = ''
     static random(min?: number, max?: number) {
         if (ValidUtil.isNullOrUndefined(min)) {
           return Math.random();
         }else if (!ValidUtil.isNullOrUndefined(min) && ValidUtil.isNullOrUndefined(max)) {
           return Math.random() * (min || 0);
-        }else{
+        }else {
           return Math.random() * ((max || 0) - (min || 0)) + (min || 0);
         }
     }
     static uuid(format: string = 'xxxx-xxxx-xxxx-xxxx'): string {
      return format.replace(/[xy]/g, function(c) {
-          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
           return v.toString(16);
       });
     }
