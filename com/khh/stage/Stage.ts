@@ -1,8 +1,8 @@
 export abstract class Stage {
 
-  private _width: number;
-  private _height: number;
-  private _data: Map<string, any>;
+  private _width = 0;
+  private _height = 0;
+  private _data: Map<string, any> = new Map<string, any>();
 
   get data(): Map<string, any> {
     return this._data;

@@ -3,17 +3,18 @@ import {Point} from './Point';
 
 export class ObjImg extends Obj {
 
-  private _img: HTMLImageElement;
+    private _img: HTMLImageElement;
+    private _head: Point;
     private _imgAlign = 'right';
-  private _imgBaseline = 'hanging';
-  private _head: Point;
-  private _index = 0;
-  // = new Point(img.width/2,img.height/2,0),
-  constructor(x: number = 0, y: number = 0, z: number = 0, img?: HTMLImageElement, head?: Point) {
-    super(x, y, z);
-    this._img = img;
-    this._head = head;
-  }
+    private _imgBaseline = 'hanging';
+    private _index = 0;
+
+    // = new Point(img.width/2,img.height/2,0),
+    constructor(x: number = 0, y: number = 0, z: number = 0, img?: HTMLImageElement, head?: Point) {
+        super(x, y, z);
+        this._img = img;
+        this._head = head;
+    }
 
     get index(): number {
         return this._index;
@@ -23,33 +24,33 @@ export class ObjImg extends Obj {
         this._index = value;
     }
 
-    get img(): HTMLImageElement {
-    return this._img;
-  }
+    get img(): HTMLImageElement{
+        return this._img;
+    }
 
-  set img(value: HTMLImageElement) {
-    this._img = value;
-  }
+    set img(value: HTMLImageElement) {
+        this._img = value;
+    }
 
-  get head(): Point {
-    return this._head;
-  }
+    get head(): Point{
+        return this._head;
+    }
 
-  set head(value: Point) {
-    this._head = value;
-  }
+    set head(value: Point) {
+        this._head = value;
+    }
 
-  public setImg(img: HTMLImageElement): void{
-    this._img = img;
-  }
+    public setImg(img: HTMLImageElement): void {
+        this._img = img;
+    }
 
-  public getImgCenterY() {
-    return this.img.height / 2;
-  }
+    public getImgCenterY() {
+        return this.img.height / 2;
+    }
 
-  public getImgCenterX() {
-    return this.img.width / 2;
-  }
+    public getImgCenterX() {
+        return this.img.width / 2;
+    }
 
     get imgAlign(): string {
         return this._imgAlign;
@@ -67,20 +68,20 @@ export class ObjImg extends Obj {
         this._imgBaseline = value;
     }
 
-    drawImage(context: CanvasRenderingContext2D, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline) {
+    drawImage(context: CanvasRenderingContext2D, img = this.img, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline) {
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textalign
         if (imgAlign === 'center') {
-            x = this.x - (this.img.width / 2);
+            x = this.x - (img.width / 2);
         }
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textbaseline
         if (imgBaseline === 'middle') {
-            y = this.y - (this.img.height / 2);
-        }else if (imgBaseline === 'hanging') {
+            y = this.y - (img.height / 2);
+        } else if (imgBaseline === 'hanging') {
             y = this.y;
-        }else if (imgBaseline === 'bottom') {
-            y = this.y - (this.img.height);
+        } else if (imgBaseline === 'bottom') {
+            y = this.y - (img.height);
         }
-        context.drawImage(this.img, x, y);
+        context.drawImage(img, x, y);
     }
 
     roundedRect(context: CanvasRenderingContext2D, x = this.x, y = this.y, width: number, height: number, radius: number) {
