@@ -66,4 +66,34 @@ export class ObjImg extends Obj {
     set imgBaseline(value: string) {
         this._imgBaseline = value;
     }
+
+    drawImage(context: CanvasRenderingContext2D, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline) {
+        //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textalign
+        if (imgAlign === 'center') {
+            x = this.x - (this.img.width / 2);
+        }
+        //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textbaseline
+        if (imgBaseline === 'middle') {
+            y = this.y - (this.img.height / 2);
+        }else if (imgBaseline === 'hanging') {
+            y = this.y;
+        }else if (imgBaseline === 'bottom') {
+            y = this.y - (this.img.height);
+        }
+        context.drawImage(this.img, x, y);
+    }
+
+    roundedRect(context: CanvasRenderingContext2D, x = this.x, y = this.y, width: number, height: number, radius: number) {
+        context.beginPath();
+        context.moveTo(x, y + radius);
+        context.lineTo(x, y + height - radius);
+        context.arcTo(x, y + height, x + radius, y + height, radius);
+        context.lineTo(x + width - radius, y + height);
+        context.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+        context.lineTo(x + width, y + radius);
+        context.arcTo(x + width, y, x + width - radius, y, radius);
+        context.lineTo(x + radius, y);
+        context.arcTo(x, y, x, y + radius, radius);
+        context.stroke();
+    }
 }
