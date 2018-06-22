@@ -1,5 +1,6 @@
 import {Obj} from '../obj/Obj';
 import {Point} from './Point';
+import {PointVector} from '../math/PointVector';
 
 export class ObjImg extends Obj {
 
@@ -68,20 +69,33 @@ export class ObjImg extends Obj {
         this._imgBaseline = value;
     }
 
-    drawImage(context: CanvasRenderingContext2D, img = this.img, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline) {
+    getImagePoint(img = this.img, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline): Point {
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textalign
         if (imgAlign === 'center') {
-            x = this.x - (img.width / 2);
+            x = x - (img.width / 2);
         }
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textbaseline
         if (imgBaseline === 'middle') {
-            y = this.y - (img.height / 2);
+            y = y - (img.height / 2);
         } else if (imgBaseline === 'hanging') {
-            y = this.y;
+            y = y;
         } else if (imgBaseline === 'bottom') {
-            y = this.y - (img.height);
+            y = y - (img.height);
         }
-        context.drawImage(img, x, y);
+        return new Point(x, y);
+    }
+    drawImage(context: CanvasRenderingContext2D, img = this.img, x = this.x, y = this.y, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline): Point {
+        const point = this.getImagePoint(img, x, y, imgAlign, imgBaseline);
+        context.drawImage(img, point.x, point.y);
+        return new Point(x, y);
+    }
+    drawRotateImage(context: CanvasRenderingContext2D, img = this.img, x = this.x, y = this.y, angle = 0, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline): Point {
+        context.translate(x, y);
+        context.rotate(Math.PI / 180 * (angle));
+        context.translate(-x, -y);
+        const p = this.drawImage(context, img, x, y);
+        context.rotate(Math.PI / 180 * 0);
+        return p;
     }
 
     roundedRect(context: CanvasRenderingContext2D, x = this.x, y = this.y, width: number, height: number, radius: number) {
