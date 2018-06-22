@@ -1,6 +1,6 @@
+import {PointVector} from '../math/PointVector';
 import {Obj} from '../obj/Obj';
 import {Point} from './Point';
-import {PointVector} from '../math/PointVector';
 
 export class ObjImg extends Obj {
 
@@ -90,12 +90,23 @@ export class ObjImg extends Obj {
         return new Point(x, y);
     }
     drawRotateImage(context: CanvasRenderingContext2D, img = this.img, x = this.x, y = this.y, angle = 0, imgAlign = this.imgAlign, imgBaseline = this.imgBaseline): Point {
+        context.save()
         context.translate(x, y);
         context.rotate(Math.PI / 180 * (angle));
         context.translate(-x, -y);
-        const p = this.drawImage(context, img, x, y);
+        const p = this.drawImage(context, img, x, y, imgAlign, imgBaseline);
         context.rotate(Math.PI / 180 * 0);
+        context.restore();
         return p;
+    }
+    drawRotate(context: CanvasRenderingContext2D, draw: (context: CanvasRenderingContext2D) => void, x = this.x, y = this.y, angle = 0) {
+        context.save()
+        context.translate(x, y);
+        context.rotate(Math.PI / 180 * (angle));
+        context.translate(-x, -y);
+        draw(context);
+        context.rotate(Math.PI / 180 * 0);
+        context.restore();
     }
 
     roundedRect(context: CanvasRenderingContext2D, x = this.x, y = this.y, width: number, height: number, radius: number) {

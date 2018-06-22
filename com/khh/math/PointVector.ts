@@ -69,13 +69,13 @@ export class PointVector {
     return new PointVector(v1.x + v2.x, v1.y + v2.y, v1.x + v2.y);
   }
 
-  public sub(v: number|PointVector, y: number, z: number) {
+  public sub(v: number|PointVector, y = 0, z = 0) {
     if (v instanceof PointVector) {
       this.x -= v.x;
       this.y -= v.y;
       this.z -= v.z;
     }else {
-      this.x -= y;
+      this.x -= v;
       this.y -= y;
       this.z -= z;
     }
