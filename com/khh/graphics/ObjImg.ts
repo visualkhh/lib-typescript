@@ -73,6 +73,9 @@ export class ObjImg extends Obj {
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textalign
         if (imgAlign === 'center') {
             x = x - (img.width / 2);
+        // }else if (imgAlign === 'start' || imgAlign === 'left') {
+        }else if (imgAlign === 'end' || imgAlign === 'right') {
+            x = x - (img.width);
         }
         //https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_textbaseline
         if (imgBaseline === 'middle') {
