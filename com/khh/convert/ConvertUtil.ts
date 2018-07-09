@@ -52,7 +52,7 @@ export class ConvertUtil {
         return mp;
     }
     static mapToObj(map: Map<string, any>): any {
-        const obj = {};
+        const obj = {} as any;
         map.forEach ((v, k) => { obj[k] = v; });
         return obj;
     }
@@ -82,7 +82,7 @@ export class ConvertUtil {
 
     }
 
-    static iteratorToArray <T>(it): T[] {
+    static iteratorToArray <T>(it: any): T[] {
         return Array.from(it) as T[];
     }
     /**
