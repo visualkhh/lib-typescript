@@ -1,10 +1,8 @@
-// import {Point} from '../graphics/Point';
-
-import {PointVector} from '../math/PointVector';
+import {PointVector} from "../math/PointVector";
 
 export class Obj extends PointVector {
 
-  //질량
+  // 질량
   private _mass: number;
 
   get mass(): number {

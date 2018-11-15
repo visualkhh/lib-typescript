@@ -1,5 +1,5 @@
 export class RegexUtil {
-    static is(regexp, msg) {
+    public static is(regexp: RegExp, msg: string) {
         return regexp.test(msg);
     }
 }
