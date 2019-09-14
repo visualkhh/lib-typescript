@@ -106,23 +106,23 @@ export class DateUtil {
      * @return
      * @author xuny
      */
-    static isValidDate(year, month, day) {
-        year  = parseInt(year  , 10);
-        month = parseInt(month , 10);
-        day   = parseInt(day   , 10);
-
-        if (year < 0 || year > 9999) {
-            return false;
-        }
-        if (month < 1 || month > 12) {
-            return false;
-        }
-
-        const endDay = this.getEndDay(year, month);
-        if (day < 1 || day > endDay) return false;
-
-        return true;
-    }
+    // static isValidDate(year, month, day) {
+    //     year  = parseInt(year  , 10);
+    //     month = parseInt(month , 10);
+    //     day   = parseInt(day   , 10);
+    //
+    //     if (year < 0 || year > 9999) {
+    //         return false;
+    //     }
+    //     if (month < 1 || month > 12) {
+    //         return false;
+    //     }
+    //
+    //     const endDay = this.getEndDay(year, month);
+    //     if (day < 1 || day > endDay) return false;
+    //
+    //     return true;
+    // }
     /**
      * 유효한 년월인지
      * @param year
@@ -230,11 +230,11 @@ export class DateUtil {
      * @return
      * @author  xuny
      */
-    static getBetweenDay(fromDateStr, toDateStr) {
-        const fDate = this.toDateObject(fromDateStr);
-        const tDate = this.toDateObject(toDateStr);
-        const day = 1000 * 3600 * 24;
-
-        return parseInt((tDate - fDate) / day);
-    }
+    // static getBetweenDay(fromDateStr, toDateStr) {
+    //     const fDate = this.toDateObject(fromDateStr);
+    //     const tDate = this.toDateObject(toDateStr);
+    //     const day = 1000 * 3600 * 24;
+    //
+    //     return parseInt((tDate - fDate) / day);
+    // }
 }
